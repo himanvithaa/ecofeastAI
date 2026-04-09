@@ -1,0 +1,5 @@
+{
+  "name": "Food Waste Redistribution Agent",
+  "description": "AI-powered agent to predict food demand, detect surplus, and suggest redistribution to NGOs to minimize waste.",
+  "requestFramePermissions": ["camera"]
+}

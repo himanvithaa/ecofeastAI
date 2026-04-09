@@ -1,0 +1,74 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email"]
+    },
+    "Analysis": {
+      "title": "Analysis",
+      "description": "Record of a food waste analysis",
+      "type": "object",
+      "properties": {
+        "pastSales": { "type": "number" },
+        "timeOfDay": { "type": "string" },
+        "actualStock": { "type": "number" },
+        "predictedDemand": { "type": "number" },
+        "surplus": { "type": "number" },
+        "recommendedAction": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["pastSales", "timeOfDay", "actualStock", "predictedDemand", "surplus", "recommendedAction", "timestamp"]
+    },
+    "Donation": {
+      "title": "Donation",
+      "description": "Record of a food redistribution",
+      "type": "object",
+      "properties": {
+        "ngoName": { "type": "string" },
+        "ngoType": { "type": "string" },
+        "mealsCount": { "type": "number" },
+        "isAnimalShelter": { "type": "boolean" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["ngoName", "mealsCount", "timestamp"]
+    },
+    "NGO": {
+      "title": "NGO",
+      "description": "Information about a non-governmental organization",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "distance": { "type": "number" },
+        "type": { "type": "string" },
+        "isAnimalShelter": { "type": "boolean" }
+      },
+      "required": ["name", "distance", "type"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile documents"
+    },
+    "/users/{userId}/analyses/{analysisId}": {
+      "schema": "Analysis",
+      "description": "History of analyses performed by the user"
+    },
+    "/users/{userId}/donations/{donationId}": {
+      "schema": "Donation",
+      "description": "History of donations made by the user"
+    },
+    "/ngos/{ngoId}": {
+      "schema": "NGO",
+      "description": "Global list of NGOs"
+    }
+  }
+}
